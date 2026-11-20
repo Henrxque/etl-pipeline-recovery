@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-11-20T23:38:45.359250+00:00",
+  "verification": "Actual desktop browser recovery dispatch, persisted-run inspection, outcome tabs and screenshots.",
+  "run_id": "5319238888144ad38f485723c4df47ff",
+  "state": "succeeded_with_review",
+  "publication": {
+    "action": "unchanged",
+    "content_hash": "65edc88902a8db6c28db91316b89ee72128dd377ebcbc69b32e417c5c0ea6958",
+    "lines": 7,
+    "orders": 6,
+    "gross_minor": 51120,
+    "currency": "BRL"
+  },
+  "passed_checks": 8,
+  "files": [
+    "docs/images/01-cover.jpg",
+    "docs/images/02-original-failure.jpg",
+    "docs/images/03-recovery.jpg",
+    "docs/images/04-row-outcomes.jpg"
+  ],
+  "responsive_verified": false
+}

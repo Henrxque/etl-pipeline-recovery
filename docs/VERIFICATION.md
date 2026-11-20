@@ -29,9 +29,13 @@ The [expected-result file](../recovery/fixtures/expected.json) is hand-authored 
 
 The local server is exercised through actual HTTP requests by [verify_http.py](../scripts/verify_http.py): asynchronous dispatch, persisted polling, concurrent request HTTP 409, diagnosis, recovery/replay, strict blocking, and saved JSON/CSV/log downloads reopened by the verifier. Its [recorded results](evidence/http-verification.json) are separate from the isolated CLI case.
 
-## Visual verification limitation
+## Desktop browser verification
 
-The browser-control service returned `service_info` timeouts and could not bind a tab. The monitor is served locally, its JavaScript syntax was checked, and its backend actions were exercised over HTTP. **Interactive browser behavior, screenshots and responsive visual layout were not verified.** There are no fabricated browser screenshots in this repository.
+The browser service was initially unavailable and became accessible during a follow-up on 20 November 2026. The actual desktop UI dispatched recovery run `5319238888` (prefix), displayed its eight passed checks and unchanged replay, opened the saved schema-failure report, and displayed accepted/rejected source-row outcomes. The full run identifier is recorded in [browser-capture.json](evidence/browser-capture.json). No browser console errors were observed.
+
+Actual JPEG captures are in [images](images): [cover](images/01-cover.jpg), [original failure](images/02-original-failure.jpg), [validated recovery](images/03-recovery.jpg), and [row outcomes](images/04-row-outcomes.jpg). These capture the real application with synthetic fixture data; the displayed results were not inserted into the page for the screenshot.
+
+**Responsive visual layout remains unverified.** The desktop browser check covers recovery dispatch and persisted-run/tab inspection; API download verification is documented separately above.
 
 ## Practical limits
 

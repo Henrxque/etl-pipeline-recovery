@@ -34,4 +34,11 @@ The project includes a local monitor, saved JSON/CSV reports, execution logs and
 
 **Technologies, if a field is offered:** Python, PySpark, SQL, ETL, Data Validation, pytest.
 
-Attach real execution evidence when preparing the final gallery. The repository includes reports/CSVs, but visual browser screenshots were not verified in this session; do not present a designed illustration as an application screenshot.
+**Portfolio gallery — attach in this order:**
+
+1. [Cover: working monitor](images/01-cover.jpg)
+2. [Before: actual Spark schema failure](images/02-original-failure.jpg)
+3. [After: validated recovery and passed checks](images/03-recovery.jpg)
+4. [Exceptions: rejected records and reason codes](images/04-row-outcomes.jpg)
+
+These are actual desktop application screenshots with synthetic fixture data.

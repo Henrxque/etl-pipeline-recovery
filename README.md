@@ -6,6 +6,10 @@
 
 Independent portfolio project by **Henrique Ramos**. The incident and commerce records are authored synthetic data; the Spark execution, exceptions, SQL transactions and validation results are real.
 
+![Pipeline Rescue desktop monitor](docs/images/01-cover.jpg)
+
+[Portfolio image gallery](docs/images) includes actual screenshots of the monitor, original failure, validated recovery and rejected-record outcomes.
+
 [Português](README.pt-BR.md) · [Incident report](docs/INCIDENT_REPORT.md) · [Data contract](docs/DATA_CONTRACT.md) · [Runbook](docs/RUNBOOK.md) · [Verification](docs/VERIFICATION.md) · [Fiverr portfolio copy](docs/FIVERR_PORTFOLIO.md)
 
 ## The recovery case
@@ -70,7 +74,7 @@ The local setup used a checksum-verified official [Eclipse Temurin 17](https://g
 5. Enable **Require zero quarantined rows**, then recover again: the job fails its strict gate and keeps the previously published output.
 6. Download the persisted report JSON, row outcomes CSV and execution logs.
 
-This is a small local monitor, not a hosted SaaS. The server must stay running to execute a job. The browser-control service was unavailable during this session; the API actions/downloads were exercised directly, while interactive visual/responsive QA remains unverified. See [verification boundaries](docs/VERIFICATION.md).
+This is a small local monitor, not a hosted SaaS. The server must stay running to execute a job. Desktop browser recovery, saved-run inspection and row-outcome views were verified and captured. API actions/downloads were also exercised directly; responsive QA remains unverified. See [verification boundaries](docs/VERIFICATION.md).
 
 ## CLI and reproducible evidence
 

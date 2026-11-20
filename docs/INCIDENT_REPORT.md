@@ -39,4 +39,4 @@ Automated tests inject a mid-insert database error to verify actual transaction 
 
 This case demonstrates a repair process a client can review: reproduce, diagnose, correct, reconcile and protect the last good output. There is no claim of measured downtime reduction, client ROI, production-store recovery or large-scale Spark performance. The output is an authoritative snapshot of one partition, not incremental CDC.
 
-The local monitor and CLI expose the evidence. Cloud deployment, authentication, a production scheduler and real source access are outside the demonstration. Visual browser QA was unavailable; actual HTTP dispatch, polling, downloads and data results were checked separately.
+The local monitor and CLI expose the evidence. Cloud deployment, authentication, a production scheduler and real source access are outside the demonstration. Desktop recovery dispatch, report inspection and outcome tabs were verified and [captured](images); actual HTTP dispatch, polling, downloads and data results were checked separately. Responsive layout remains unverified.

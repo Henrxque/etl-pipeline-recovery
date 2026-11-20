@@ -4,6 +4,10 @@
 
 **Python · PySpark 4.3 · SQL · SQLite · pytest**
 
+![Painel do Pipeline Rescue](docs/images/01-cover.jpg)
+
+As [imagens para o portfólio](docs/images) são capturas reais do painel, da falha original, da recuperação validada e dos registros rejeitados.
+
 ## O que o projeto demonstra
 
 - **Mudança de schema:** a consulta antiga espera `unit_price` e `order_date`; a origem passou a entregar `price` e `ordered_at`.
@@ -37,7 +41,7 @@ Abra **http://127.0.0.1:8002/**. Em Linux/macOS, use `.venv/bin/python`. O prime
 
 No painel, execute **Reproduce failure**, **Diagnose input** e **Recover partition**. Repita a recuperação para conferir o resultado inalterado. Ative **Require zero quarantined rows** para demonstrar a preservação da carga anterior quando uma validação bloqueia o processo.
 
-O controle automático do navegador ficou indisponível nesta sessão. As ações e downloads foram exercitados pela API HTTP; a revisão visual e responsiva não foi confirmada.
+O fluxo de recuperação, a consulta de execuções salvas e os resultados por registro foram verificados no navegador desktop e capturados em imagens. As ações e downloads também foram exercitados pela API HTTP. A revisão responsiva permanece pendente.
 
 ## Execução reproduzível
 
