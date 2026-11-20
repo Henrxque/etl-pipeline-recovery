@@ -1,0 +1,18 @@
+Run ID,Source record,Order,Line,Disposition,Reasons
+ad281d1f139841c183e5fb794bf4bf83,R01,A1001,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R02,A1001,1,duplicate,
+ad281d1f139841c183e5fb794bf4bf83,R03,A1001,2,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R04,A1002,1,superseded,
+ad281d1f139841c183e5fb794bf4bf83,R05,A1002,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R06,A1003,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R07,A1004,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R08,A1005,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R09,A1006,1,accepted,
+ad281d1f139841c183e5fb794bf4bf83,R10,A1007,1,rejected,invalid_price
+ad281d1f139841c183e5fb794bf4bf83,R11,A1008,1,rejected,invalid_quantity
+ad281d1f139841c183e5fb794bf4bf83,R12,A1009,1,rejected,missing_customer
+ad281d1f139841c183e5fb794bf4bf83,R13,A1010,1,rejected,invalid_date
+ad281d1f139841c183e5fb794bf4bf83,R14,A1011,1,rejected,invalid_quantity
+ad281d1f139841c183e5fb794bf4bf83,R15,A1012,1,rejected,invalid_price
+ad281d1f139841c183e5fb794bf4bf83,R16,A1013,1,rejected,conflicting_same_version
+ad281d1f139841c183e5fb794bf4bf83,R17,A1013,1,rejected,conflicting_same_version

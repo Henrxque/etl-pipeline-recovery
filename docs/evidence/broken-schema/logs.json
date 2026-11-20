@@ -1,0 +1,58 @@
+[
+  {
+    "event_id": 1,
+    "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+    "occurred_at": "2026-11-20T23:10:12.809547+00:00",
+    "stage": "start",
+    "level": "info",
+    "message": "Run claimed; published data remains unchanged until validation completes.",
+    "context": {
+      "action": "broken",
+      "scenario": "schema"
+    }
+  },
+  {
+    "event_id": 2,
+    "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+    "occurred_at": "2026-11-20T23:10:12.840127+00:00",
+    "stage": "runtime",
+    "level": "info",
+    "message": "Starting the local Spark session; native Spark SQL expressions perform the transformation.",
+    "context": {}
+  },
+  {
+    "event_id": 3,
+    "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+    "occurred_at": "2026-11-20T23:10:59.628870+00:00",
+    "stage": "extract",
+    "level": "info",
+    "message": "CSV structure checked and explicit string schemas loaded.",
+    "context": {
+      "order_lines.csv": 17,
+      "customer_history.csv": 6
+    }
+  },
+  {
+    "event_id": 4,
+    "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+    "occurred_at": "2026-11-20T23:10:59.933118+00:00",
+    "stage": "error",
+    "level": "error",
+    "message": "Execution failed before curated publication.",
+    "context": {
+      "code": "UNRESOLVED_COLUMN.WITH_SUGGESTION"
+    }
+  },
+  {
+    "event_id": 5,
+    "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+    "occurred_at": "2026-11-20T23:11:00.027419+00:00",
+    "stage": "finish",
+    "level": "error",
+    "message": "Terminal report saved; execution lease released.",
+    "context": {
+      "state": "failed",
+      "publication": null
+    }
+  }
+]

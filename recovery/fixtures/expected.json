@@ -1,0 +1,21 @@
+{
+  "note": "Hand-authored acceptance oracle for this synthetic fixture; the recovery engine never reads it.",
+  "source_rows": 17,
+  "accepted_lines": 7,
+  "rejected_rows": 8,
+  "duplicate_rows": 1,
+  "superseded_rows": 1,
+  "orders": 6,
+  "gross_minor": 51120,
+  "currency": "BRL",
+  "order_date": "2026-11-18",
+  "lines": {
+    "A1001/1": 3980,
+    "A1001/2": 4950,
+    "A1002/1": 8490,
+    "A1003/1": 5970,
+    "A1004/1": 25000,
+    "A1005/1": 1230,
+    "A1006/1": 1500
+  }
+}

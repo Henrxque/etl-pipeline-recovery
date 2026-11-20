@@ -1,0 +1,78 @@
+[
+  {
+    "event_id": 24,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:22.684493+00:00",
+    "stage": "start",
+    "level": "info",
+    "message": "Run claimed; published data remains unchanged until validation completes.",
+    "context": {
+      "action": "recover",
+      "scenario": null
+    }
+  },
+  {
+    "event_id": 25,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:22.774593+00:00",
+    "stage": "runtime",
+    "level": "info",
+    "message": "Starting the local Spark session; native Spark SQL expressions perform the transformation.",
+    "context": {}
+  },
+  {
+    "event_id": 26,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:23.085799+00:00",
+    "stage": "extract",
+    "level": "info",
+    "message": "CSV structure checked and explicit string schemas loaded.",
+    "context": {
+      "order_lines.csv": 17,
+      "customer_history.csv": 6
+    }
+  },
+  {
+    "event_id": 27,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:24.265843+00:00",
+    "stage": "diagnose",
+    "level": "info",
+    "message": "Schema aliases, unsafe casts and join cardinality profiled using Spark SQL.",
+    "context": {}
+  },
+  {
+    "event_id": 28,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:34.046826+00:00",
+    "stage": "validate",
+    "level": "info",
+    "message": "Every source row classified; partition and totals checked.",
+    "context": {
+      "source_rows": 17,
+      "accepted": 7,
+      "rejected": 8,
+      "duplicates": 1,
+      "superseded": 1
+    }
+  },
+  {
+    "event_id": 29,
+    "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+    "occurred_at": "2026-11-20T23:11:34.095623+00:00",
+    "stage": "finish",
+    "level": "info",
+    "message": "Terminal report saved; execution lease released.",
+    "context": {
+      "state": "succeeded_with_review",
+      "publication": {
+        "action": "replaced_partition",
+        "content_hash": "65edc88902a8db6c28db91316b89ee72128dd377ebcbc69b32e417c5c0ea6958",
+        "lines": 7,
+        "orders": 6,
+        "gross_minor": 51120,
+        "currency": "BRL"
+      }
+    }
+  }
+]

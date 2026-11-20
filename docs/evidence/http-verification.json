@@ -1,0 +1,47 @@
+{
+  "scope": "Actual local HTTP requests; not visual browser QA.",
+  "checks": {
+    "asynchronous_dispatch": true,
+    "concurrent_request_409": true,
+    "saved_downloads_reopened": true,
+    "published_lines": 7,
+    "gross_minor": 51120,
+    "strict_gate_preserved_partition": true
+  },
+  "runs": {
+    "diagnose": {
+      "run_id": "e280dda30e7743ccb60e37f3b4cf8e44",
+      "state": "succeeded",
+      "publication": null
+    },
+    "recover": {
+      "run_id": "3a311ce4e83549a1b2adcd7c334ce488",
+      "state": "succeeded_with_review",
+      "publication": {
+        "action": "replaced_partition",
+        "content_hash": "65edc88902a8db6c28db91316b89ee72128dd377ebcbc69b32e417c5c0ea6958",
+        "lines": 7,
+        "orders": 6,
+        "gross_minor": 51120,
+        "currency": "BRL"
+      }
+    },
+    "replay": {
+      "run_id": "0ae39dc630694127a911df4caf1c3954",
+      "state": "succeeded_with_review",
+      "publication": {
+        "action": "unchanged",
+        "content_hash": "65edc88902a8db6c28db91316b89ee72128dd377ebcbc69b32e417c5c0ea6958",
+        "lines": 7,
+        "orders": 6,
+        "gross_minor": 51120,
+        "currency": "BRL"
+      }
+    },
+    "strict-blocked": {
+      "run_id": "b1c413b781594fe3a7884a9af026d823",
+      "state": "failed",
+      "publication": null
+    }
+  }
+}

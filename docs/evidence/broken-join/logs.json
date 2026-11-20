@@ -1,0 +1,47 @@
+[
+  {
+    "event_id": 11,
+    "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+    "occurred_at": "2026-11-20T23:11:07.539837+00:00",
+    "stage": "start",
+    "level": "info",
+    "message": "Run claimed; published data remains unchanged until validation completes.",
+    "context": {
+      "action": "broken",
+      "scenario": "join"
+    }
+  },
+  {
+    "event_id": 12,
+    "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+    "occurred_at": "2026-11-20T23:11:07.589659+00:00",
+    "stage": "runtime",
+    "level": "info",
+    "message": "Starting the local Spark session; native Spark SQL expressions perform the transformation.",
+    "context": {}
+  },
+  {
+    "event_id": 13,
+    "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+    "occurred_at": "2026-11-20T23:11:07.770677+00:00",
+    "stage": "extract",
+    "level": "info",
+    "message": "CSV structure checked and explicit string schemas loaded.",
+    "context": {
+      "order_lines.csv": 17,
+      "customer_history.csv": 6
+    }
+  },
+  {
+    "event_id": 14,
+    "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+    "occurred_at": "2026-11-20T23:11:10.523442+00:00",
+    "stage": "finish",
+    "level": "error",
+    "message": "Terminal report saved; execution lease released.",
+    "context": {
+      "state": "failed_validation",
+      "publication": null
+    }
+  }
+]

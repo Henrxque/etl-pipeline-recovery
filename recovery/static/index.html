@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A real PySpark ETL recovery lab: reproduce a failure, diagnose the source, validate and publish a corrected partition."
+    />
+    <title>Pipeline Rescue — ETL recovery lab</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/dashboard.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Pipeline Rescue home"
+        ><span class="brandmark">pr</span
+        ><span>Pipeline<span class="brandlight">Rescue</span></span></a
+      >
+      <nav aria-label="Page navigation">
+        <a href="#lab">Recovery lab</a><a href="#history">Execution history</a
+        ><a href="#case">Engineering case</a>
+      </nav>
+      <span class="scope-tag">Independent portfolio project</span>
+    </header>
+    <main>
+      <section class="hero" id="lab">
+        <div>
+          <p class="eyebrow">ETL PIPELINE RECOVERY / PYTHON + PYSPARK + SQL</p>
+          <h1>A failed pipeline.<br />A recovery you can <em>verify.</em></h1>
+          <p class="lead">
+            Reproduce the incident, trace its cause, and publish a corrected
+            partition only after the data checks pass.
+          </p>
+        </div>
+        <aside class="incident-card">
+          <span class="tiny-label">INCIDENT FIXTURE</span
+          ><strong>Commerce order lines</strong>
+          <p>Schema drift · Invalid values · Join fan-out</p>
+          <div>
+            <span class="pill">Synthetic data</span
+            ><span class="pill">Real Spark execution</span>
+          </div>
+          <p class="incident-date">
+            Partition: <span>18 November 2026</span><br />Local run · BRL
+            supplied by the fixture
+          </p>
+        </aside>
+      </section>
+
+      <div id="error" class="notice danger" role="alert" hidden></div>
+      <div id="notice" class="notice" role="status" hidden></div>
+
+      <section class="workflow" aria-label="Recovery actions">
+        <article class="step">
+          <div class="step-heading">
+            <span class="step-icon failure">!</span
+            ><span class="tiny-label">REPRODUCE</span>
+          </div>
+          <h2>Make the failure visible.</h2>
+          <p>Run the defective code against the actual incident fixture.</p>
+          <label for="scenario">Failure scenario</label
+          ><select id="scenario">
+            <option value="schema">Schema drift / missing columns</option>
+            <option value="cast">Unsafe numeric cast</option>
+            <option value="join">
+              Historical join + append replay
+            </option></select
+          ><button id="run-broken" class="button secondary">
+            Reproduce failure
+          </button>
+        </article>
+        <article class="step">
+          <div class="step-heading">
+            <span class="step-icon diagnose">⌕</span
+            ><span class="tiny-label">DIAGNOSE</span>
+          </div>
+          <h2>Find the cause.</h2>
+          <p>
+            Profile source columns, unsafe casts, repeated keys and customer
+            history.
+          </p>
+          <div class="step-note">
+            <span>Inspect before changing.</span
+            ><small
+              >Findings come from the loaded source and Spark SQL
+              profiles.</small
+            >
+          </div>
+          <button id="run-diagnose" class="button secondary">
+            Diagnose input
+          </button>
+        </article>
+        <article class="step recover-step">
+          <div class="step-heading">
+            <span class="step-icon recover">✓</span
+            ><span class="tiny-label">RECOVER & VALIDATE</span>
+          </div>
+          <h2>Publish with evidence.</h2>
+          <p>
+            Normalize, quarantine, reconcile and atomically replace one
+            partition.
+          </p>
+          <label class="check-label"
+            ><input type="checkbox" id="strict" />Require zero quarantined
+            rows</label
+          ><small class="strict-note"
+            >Enable to demonstrate a blocking quality gate.</small
+          ><button id="run-recover" class="button primary">
+            Recover partition
+          </button>
+        </article>
+      </section>
+
+      <section class="metrics" aria-label="Published partition metrics">
+        <article>
+          <span>Published order lines</span><strong id="metric-lines">—</strong
+          ><small id="metric-orders">No validated partition published</small>
+        </article>
+        <article>
+          <span>Published fixture value</span
+          ><strong id="metric-value">—</strong
+          ><small>Gross line total · Synthetic BRL amounts</small>
+        </article>
+        <article>
+          <span>Rows for review</span><strong id="metric-review">—</strong
+          ><small>From the latest recovery report</small>
+        </article>
+        <article>
+          <span>Latest publication</span
+          ><strong id="metric-action" class="word-metric">Not published</strong
+          ><small id="metric-checks">Previous data survives a failed run</small>
+        </article>
+      </section>
+
+      <section class="evidence-grid">
+        <article class="panel execution-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="tiny-label">EXECUTION EVIDENCE</p>
+              <h2 id="detail-title">The trail starts with a run.</h2>
+            </div>
+            <span id="run-status" class="status neutral">Ready</span>
+          </div>
+          <div id="detail-meta" class="detail-meta">
+            Select an action above. The first run starts a local JVM and may
+            take longer.
+          </div>
+          <div class="tabs" role="tablist" aria-label="Run detail views">
+            <button
+              id="tab-overview"
+              role="tab"
+              aria-selected="true"
+              aria-controls="detail"
+            >
+              Overview</button
+            ><button
+              id="tab-outcomes"
+              role="tab"
+              aria-selected="false"
+              aria-controls="detail"
+            >
+              Row outcomes</button
+            ><button
+              id="tab-logs"
+              role="tab"
+              aria-selected="false"
+              aria-controls="detail"
+            >
+              Execution logs
+            </button>
+          </div>
+          <div id="detail" class="detail" role="tabpanel">
+            <div class="empty">
+              <span class="empty-mark">{ }</span>
+              <h3>No execution has been recorded.</h3>
+              <p>
+                Reports, checks and source-row outcomes appear here after a real
+                run.
+              </p>
+            </div>
+          </div>
+          <div class="downloads">
+            <span>Saved evidence</span
+            ><button id="download-report" disabled>Report JSON</button
+            ><button id="download-csv" disabled>Outcomes CSV</button
+            ><button id="download-logs" disabled>Logs JSON</button>
+          </div>
+        </article>
+        <aside class="panel guardrail-panel">
+          <p class="tiny-label">THE RECOVERY CONTRACT</p>
+          <h2>Success is a data result.</h2>
+          <ul class="contract-list">
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Every source row accounted for</strong>
+                <p>
+                  Accepted, rejected, duplicated or superseded. Nothing silently
+                  disappears.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>One customer per join key</strong>
+                <p>
+                  Resolve history before joining and validate the business
+                  grain.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Exact amount reconciliation</strong>
+                <p>
+                  Decimal calculations in Spark. Integer minor units in SQLite.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>A safe publication boundary</strong>
+                <p>
+                  Validate first. Commit output, aggregates and the report
+                  together.
+                </p>
+              </div>
+            </li>
+          </ul>
+          <div class="boundary-note">
+            <strong>Recover again to test the replay.</strong>
+            <p>
+              Unchanged content keeps the same published partition. A new run
+              still leaves its own audit trail.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel" id="history">
+        <div class="panel-heading">
+          <div>
+            <p class="tiny-label">EXECUTION HISTORY</p>
+            <h2>Failures stay part of the story.</h2>
+          </div>
+          <button id="refresh" class="text-button">Refresh</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Started / run</th>
+                <th>Action</th>
+                <th>Outcome</th>
+                <th>Publication</th>
+                <th>Evidence</th>
+              </tr>
+            </thead>
+            <tbody id="history-body">
+              <tr>
+                <td colspan="5">No runs yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Latest 20 runs. Broken join tests append only to an isolated legacy
+          target; the curated partition stays separate.
+          <span id="legacy-count"></span>
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="tiny-label">CURATED OUTPUT / SQLITE</p>
+            <h2>Inspect the published data.</h2>
+          </div>
+          <span class="pill">One explicit partition</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Order / line</th>
+                <th>Customer</th>
+                <th>Quantity</th>
+                <th>Unit price</th>
+                <th>Gross amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="lines-body">
+              <tr>
+                <td colspan="6">No curated records have been published.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section" id="case">
+        <div>
+          <p class="eyebrow">THE ENGINEERING CASE</p>
+          <h2>From “the job ran”<br />to “the output reconciles.”</h2>
+          <p>
+            This lab is built for the service
+            <strong>Fix Broken ETL Pipelines</strong>. The value is in
+            diagnosing the failure, defining a correction and proving the
+            resulting data.
+          </p>
+          <p class="case-boundary">
+            Authored synthetic incident. No customer outage, production scale,
+            financial recovery or measured ROI is claimed.
+          </p>
+        </div>
+        <div class="case-cards">
+          <article>
+            <span class="tiny-label">BEFORE / DEFECTIVE PIPELINE</span>
+            <h3>Implicit assumptions, silent damage.</h3>
+            <p>
+              Renamed columns break the job. Direct casts reject source values.
+              A historical join multiplies rows. Append writes accumulate the
+              snapshot on replay.
+            </p>
+          </article>
+          <article class="case-after">
+            <span class="tiny-label">AFTER / RECOVERED PIPELINE</span>
+            <h3>Explicit rules, inspectable outcomes.</h3>
+            <p>
+              Controlled aliases, typed values, one current customer,
+              deterministic version handling, a quarantine ledger and
+              transactional publication backed by SQL checks.
+            </p>
+          </article>
+        </div>
+      </section>
+      <footer>
+        <span
+          >Pipeline Rescue · Henrique Ramos · Independent portfolio
+          project</span
+        ><span>Python / PySpark / SQL / pytest</span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+name: Verify ETL recovery
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-dev.lock
+      - uses: actions/setup-java@v6.3.0
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install -r requirements-dev.lock
+          python -m pip install --no-deps -e .
+          python -m pip check
+      - name: Lint and run real Spark tests
+        run: |
+          python -m ruff check recovery tests scripts
+          python -m pytest -q
+      - name: Verify the complete incident
+        run: python scripts/verify_case.py --database tmp/ci.sqlite3 --output artifacts/verified-case
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: recovery-evidence-py${{ matrix.python }}
+          path: artifacts/verified-case/

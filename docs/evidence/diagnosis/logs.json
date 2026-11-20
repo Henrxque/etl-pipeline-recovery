@@ -1,0 +1,56 @@
+[
+  {
+    "event_id": 19,
+    "run_id": "89c8f4025f554e599ed1914beac43073",
+    "occurred_at": "2026-11-20T23:11:18.801195+00:00",
+    "stage": "start",
+    "level": "info",
+    "message": "Run claimed; published data remains unchanged until validation completes.",
+    "context": {
+      "action": "diagnose",
+      "scenario": null
+    }
+  },
+  {
+    "event_id": 20,
+    "run_id": "89c8f4025f554e599ed1914beac43073",
+    "occurred_at": "2026-11-20T23:11:18.879585+00:00",
+    "stage": "runtime",
+    "level": "info",
+    "message": "Starting the local Spark session; native Spark SQL expressions perform the transformation.",
+    "context": {}
+  },
+  {
+    "event_id": 21,
+    "run_id": "89c8f4025f554e599ed1914beac43073",
+    "occurred_at": "2026-11-20T23:11:19.244836+00:00",
+    "stage": "extract",
+    "level": "info",
+    "message": "CSV structure checked and explicit string schemas loaded.",
+    "context": {
+      "order_lines.csv": 17,
+      "customer_history.csv": 6
+    }
+  },
+  {
+    "event_id": 22,
+    "run_id": "89c8f4025f554e599ed1914beac43073",
+    "occurred_at": "2026-11-20T23:11:22.245080+00:00",
+    "stage": "diagnose",
+    "level": "info",
+    "message": "Schema aliases, unsafe casts and join cardinality profiled using Spark SQL.",
+    "context": {}
+  },
+  {
+    "event_id": 23,
+    "run_id": "89c8f4025f554e599ed1914beac43073",
+    "occurred_at": "2026-11-20T23:11:22.375617+00:00",
+    "stage": "finish",
+    "level": "info",
+    "message": "Terminal report saved; execution lease released.",
+    "context": {
+      "state": "succeeded",
+      "publication": null
+    }
+  }
+]

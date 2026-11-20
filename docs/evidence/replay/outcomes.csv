@@ -1,0 +1,18 @@
+Run ID,Source record,Order,Line,Disposition,Reasons
+6c403f18b1c44bf7829c5a5dfc722491,R01,A1001,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R02,A1001,1,duplicate,
+6c403f18b1c44bf7829c5a5dfc722491,R03,A1001,2,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R04,A1002,1,superseded,
+6c403f18b1c44bf7829c5a5dfc722491,R05,A1002,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R06,A1003,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R07,A1004,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R08,A1005,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R09,A1006,1,accepted,
+6c403f18b1c44bf7829c5a5dfc722491,R10,A1007,1,rejected,invalid_price
+6c403f18b1c44bf7829c5a5dfc722491,R11,A1008,1,rejected,invalid_quantity
+6c403f18b1c44bf7829c5a5dfc722491,R12,A1009,1,rejected,missing_customer
+6c403f18b1c44bf7829c5a5dfc722491,R13,A1010,1,rejected,invalid_date
+6c403f18b1c44bf7829c5a5dfc722491,R14,A1011,1,rejected,invalid_quantity
+6c403f18b1c44bf7829c5a5dfc722491,R15,A1012,1,rejected,invalid_price
+6c403f18b1c44bf7829c5a5dfc722491,R16,A1013,1,rejected,conflicting_same_version
+6c403f18b1c44bf7829c5a5dfc722491,R17,A1013,1,rejected,conflicting_same_version

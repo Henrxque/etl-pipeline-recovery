@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+  "action": "broken",
+  "scenario": "schema",
+  "partition_date": "2026-11-18",
+  "started_at": "2026-11-20T23:10:12.779865+00:00",
+  "data_scope": "Authored synthetic ETL incident. Not a customer outage or production recovery.",
+  "contract_version": "1.0",
+  "strict": false,
+  "state": "failed",
+  "publication": null,
+  "runtime": {
+    "spark_version": "4.3.0",
+    "master": "local[2]",
+    "timezone": "UTC",
+    "ansi": "true"
+  },
+  "inputs": {
+    "order_lines.csv": {
+      "file": "order_lines.csv",
+      "headers": [
+        "source_record",
+        "order_id",
+        "line_id",
+        "customer_id",
+        "ordered_at",
+        "quantity",
+        "price",
+        "currency",
+        "updated_at"
+      ],
+      "mapping": {
+        "source_record": "source_record",
+        "order_id": "order_id",
+        "line_id": "line_id",
+        "customer_id": "customer_id",
+        "order_date": "ordered_at",
+        "quantity": "quantity",
+        "unit_price": "price",
+        "currency": "currency",
+        "updated_at": "updated_at"
+      },
+      "rows": 17,
+      "sha256": "09fc9625feb9a7acd3f1c1c8034c89d9f5b22879369b8dd0b39ca554570649cd"
+    },
+    "customer_history.csv": {
+      "file": "customer_history.csv",
+      "headers": [
+        "customer_id",
+        "customer_name",
+        "updated_at"
+      ],
+      "mapping": {
+        "customer_id": "customer_id",
+        "customer_name": "customer_name",
+        "updated_at": "updated_at"
+      },
+      "rows": 6,
+      "sha256": "cb89add9a1c11384be97866ca5f8e7ff8ddf70fe6364bdf6d8a024f94027ef77"
+    }
+  },
+  "error": {
+    "code": "UNRESOLVED_COLUMN.WITH_SUGGESTION",
+    "type": "AnalysisException",
+    "message": "[UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `unit_price` cannot be resolved. Did you mean one of the following? [`price`, `line_id`, `order_id`, `currency`, `customer_id`]. SQLSTATE: 42703; line 1 pos 24;\n'Project [order_id#1, line_id#2, 'unit_price, 'order_date]\n+- SubqueryAlias source_orders\n   +- View (`source_orders`, [source_record#0, order_id#1, line_id#2, customer_id#3, ordered_at#4, quantity#5, price#6, currency#7, updated_at#8])\n      +- Relation [source_record#0,order_id#1,line_id#2,customer_id#3,ordered_at#4,quantity#5,price#6,currency#7,updated_at#8] csv\n"
+  },
+  "duration_ms": 47187,
+  "finished_at": "2026-11-20T23:11:00.027274+00:00"
+}

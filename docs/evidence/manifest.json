@@ -1,0 +1,62 @@
+{
+  "data_scope": "Authored synthetic incident; real local Spark execution.",
+  "runtime": {
+    "spark_version": "4.3.0",
+    "master": "local[2]",
+    "timezone": "UTC",
+    "ansi": "true"
+  },
+  "cases": {
+    "broken-schema": {
+      "run_id": "2252a355ac3940b5a529f5b6796dc03e",
+      "state": "failed",
+      "duration_ms": 47187
+    },
+    "broken-cast": {
+      "run_id": "85c8c5dfd2624a1ca68983fa9fe2b003",
+      "state": "failed",
+      "duration_ms": 6916
+    },
+    "broken-join": {
+      "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+      "state": "failed_validation",
+      "duration_ms": 2933
+    },
+    "broken-join-replay": {
+      "run_id": "7c4ba7c8cb964391993397e51a41371d",
+      "state": "failed_validation",
+      "duration_ms": 7594
+    },
+    "diagnosis": {
+      "run_id": "89c8f4025f554e599ed1914beac43073",
+      "state": "succeeded",
+      "duration_ms": 3496
+    },
+    "recovered": {
+      "run_id": "ad281d1f139841c183e5fb794bf4bf83",
+      "state": "succeeded_with_review",
+      "duration_ms": 11301
+    },
+    "replay": {
+      "run_id": "6c403f18b1c44bf7829c5a5dfc722491",
+      "state": "succeeded_with_review",
+      "duration_ms": 5052
+    },
+    "strict-blocked": {
+      "run_id": "441f0d0259a040edb0dfacd8fdcff1ff",
+      "state": "failed",
+      "duration_ms": 5783
+    }
+  },
+  "observed": {
+    "source_rows": 17,
+    "legacy_joined_rows": 25,
+    "legacy_rows_after_replay": 50,
+    "accepted_lines": 7,
+    "orders": 6,
+    "gross_minor": 51120,
+    "currency": "BRL",
+    "replay": "unchanged",
+    "strict_gate_preserved_partition": true
+  }
+}

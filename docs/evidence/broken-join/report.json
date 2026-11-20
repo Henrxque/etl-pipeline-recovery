@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "run_id": "30041e83d82c4023b4b0b56ae3cd19bf",
+  "action": "broken",
+  "scenario": "join",
+  "partition_date": "2026-11-18",
+  "started_at": "2026-11-20T23:11:07.511148+00:00",
+  "data_scope": "Authored synthetic ETL incident. Not a customer outage or production recovery.",
+  "contract_version": "1.0",
+  "strict": false,
+  "state": "failed_validation",
+  "publication": null,
+  "runtime": {
+    "spark_version": "4.3.0",
+    "master": "local[2]",
+    "timezone": "UTC",
+    "ansi": "true"
+  },
+  "inputs": {
+    "order_lines.csv": {
+      "file": "order_lines.csv",
+      "headers": [
+        "source_record",
+        "order_id",
+        "line_id",
+        "customer_id",
+        "ordered_at",
+        "quantity",
+        "price",
+        "currency",
+        "updated_at"
+      ],
+      "mapping": {
+        "source_record": "source_record",
+        "order_id": "order_id",
+        "line_id": "line_id",
+        "customer_id": "customer_id",
+        "order_date": "ordered_at",
+        "quantity": "quantity",
+        "unit_price": "price",
+        "currency": "currency",
+        "updated_at": "updated_at"
+      },
+      "rows": 17,
+      "sha256": "09fc9625feb9a7acd3f1c1c8034c89d9f5b22879369b8dd0b39ca554570649cd"
+    },
+    "customer_history.csv": {
+      "file": "customer_history.csv",
+      "headers": [
+        "customer_id",
+        "customer_name",
+        "updated_at"
+      ],
+      "mapping": {
+        "customer_id": "customer_id",
+        "customer_name": "customer_name",
+        "updated_at": "updated_at"
+      },
+      "rows": 6,
+      "sha256": "cb89add9a1c11384be97866ca5f8e7ff8ddf70fe6364bdf6d8a024f94027ef77"
+    }
+  },
+  "legacy": {
+    "joined_rows_this_run": 25,
+    "source_rows": 17,
+    "append_target_rows": 25,
+    "target": "isolated legacy_lines; curated order_lines untouched"
+  },
+  "error": {
+    "code": "legacy_quality_failure",
+    "message": "Historical join fan-out and append replay produce an unvalidated legacy target."
+  },
+  "duration_ms": 2933,
+  "finished_at": "2026-11-20T23:11:10.523271+00:00"
+}

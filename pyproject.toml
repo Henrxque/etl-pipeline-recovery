@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "etl-pipeline-recovery"
+version = "0.1.0"
+description = "A reproducible PySpark ETL incident: failure, diagnosis, recovery, quarantine and SQL reconciliation."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = ["pyspark==4.3.0", "fastapi==0.165.0", "uvicorn==0.54.0"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "ruff==0.17.6"]
+
+[tool.setuptools.packages.find]
+include = ["recovery*"]
+
+[tool.setuptools.package-data]
+recovery = ["sql/*.sql", "fixtures/*.csv", "fixtures/*.json", "static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
